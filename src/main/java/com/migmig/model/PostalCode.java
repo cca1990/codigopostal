@@ -3,15 +3,15 @@ package com.migmig.model;
 /**
  * Created by mramos on 1/22/2016.
  */
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "codigospostales")
 public class PostalCode {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    
     @Column(name="CODIGOPOSTAL")
     private long codigoPostal;
 
