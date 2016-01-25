@@ -14,9 +14,10 @@ import java.util.stream.Stream;
 
 /**
  * Created by mramos on 1/22/2016.
+ * Utility class to transform cp data to our H2 import.sql
  */
 public class Bar {
-    public static void main(String[] args) {
+    public static void mainBar(String[] args) {
         List<String> toWrite = new ArrayList<>();
         String fileName = "c:/dev/CP.txt";
         String format = "insert into codigospostales (codigoPostal, colonia, municipio, estado) values(%s, '%s', '%s', '%s');";

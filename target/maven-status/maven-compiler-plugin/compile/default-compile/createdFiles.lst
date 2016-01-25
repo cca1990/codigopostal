@@ -1,0 +1,6 @@
+com\migmig\repository\FooRepository.class
+com\migmig\model\PostalCode.class
+com\migmig\model\Foo.class
+com\migmig\Bar.class
+com\migmig\repository\PostalCodeRepository.class
+com\migmig\CpApplication.class
