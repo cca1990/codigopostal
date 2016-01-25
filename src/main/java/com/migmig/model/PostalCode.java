@@ -11,7 +11,7 @@ public class PostalCode {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    
+
     @Column(name="CODIGOPOSTAL")
     private long codigoPostal;
 
