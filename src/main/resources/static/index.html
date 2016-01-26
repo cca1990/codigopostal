@@ -1,10 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="cpapp">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Codigos Postales</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
 </head>
-<body>
-    <p>Hmm...</p>
+<body ng-controller="CpCtrl">
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-12 text-center v-center">
+
+            <h1>Códigos Postales de México</h1>
+            <p class="lead">Busca por código postal, colonia, municipio o estado...</p>
+
+            <br><br><br>
+
+        </div>
+
+    </div> <!-- /row -->
+
+    <div class="row">
+        <div class="col-md-10"><input ng-model="searchTerm.term" class="form-control" type="text" ng-keypress="$event.which === 13 && findSimilar()"></div>
+        <div class="col-md-2"><button class="btn btn-default" ng-click="findSimilar();">Buscar</button> </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12"><h5 ng-bind="foundElements+' elementos encontrados.'">Cargando...</h5></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12" ng-show="!loaded">
+            <h2>Cargando...</h2>
+        </div>
+    </div>
+    <div class="row" ng-show="loaded">
+        <div class="col-lg-12">
+            <table id="example" class="table table-striped display" width="100%">
+                <thead>
+                <tr>
+                    <th>Código Postal</th>
+                    <th>Colonia</th>
+                    <th>Municipio</th>
+                    <th>Estado</th>
+                </tr>
+                </thead>
+                <tr  ng-repeat="postalCode in postalCodes">
+                    <td ng-bind="postalCode.codigoPostal">Cargando...</td>
+                    <td ng-bind="postalCode.colonia"></td>
+                    <td ng-bind="postalCode.municipio"></td>
+                    <td ng-bind="postalCode.estado"></td>
+                </tr>
+                <tfoot>
+                <tr>
+                    <th>Código Postal</th>
+                    <th>Colonia</th>
+                    <th>Municipio</th>
+                    <th>Estado</th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <br><br><br><br><br>
+
+</div> <!-- /container full -->
+
+<div class="container">
+
+    <hr>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <br><br>
+            <p class="pull-right"><a href="http://www.correosdemexico.gob.mx/">Datos de
+                http://www.correosdemexico.gob.mx/</a> &nbsp; al 2016.</p>
+            <br><br>
+        </div>
+    </div>
+</div>
+
+
+<!-- script references -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.1/angular.min.js"></script>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/lodash/2.1.0/lodash.compat.min.js"></script>
+<script type="text/javascript" src="http://cdn.jsdelivr.net/restangular/latest/restangular.min.js"></script>
+
+<script src="/js/app.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
 </body>
 </html>
