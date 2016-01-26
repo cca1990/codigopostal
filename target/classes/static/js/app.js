@@ -3,8 +3,8 @@
 
     cpapp.controller('CpCtrl', ['$scope', 'Restangular',function($scope, Restangular) {
     $scope.searchTerm = {};
-    $scope.searchTerm.term = '31200';
-    $scope.foundElements;
+    $scope.searchTerm.term = 'magisterial univ';
+    $scope.foundElements = 0;
     $scope.loaded = false;
 
     //find similar entries
@@ -17,7 +17,7 @@
             $scope.loaded = true;
         });
     };
-    $scope.findSimilar('');
 
+    $scope.findSimilar();
     }]);
 }());
