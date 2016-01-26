@@ -9,6 +9,7 @@
 
     //find similar entries
     $scope.findSimilar = function(){
+    $scope.foundElements = '...';
     $scope.loaded = false;
         Restangular.one('/api/postalCodes/search/findSimilar?term='+$scope.searchTerm.term ,'').get().then(function(embeddedData) {
             var postalCodes = embeddedData._embedded.postalCodes;
