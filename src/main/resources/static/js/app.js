@@ -32,7 +32,7 @@ var showPostalCodesBySimilarTerm = function(term, page){
         updatePageLinks(data);
 
         //some tweaks for this plugin
-        if(prevTerm != term){
+        if(prevTerm != term && (data.page.size < data.page.totalPages)){ //just if we need pagination
             $('.pagination-holder').html('');
             $('.pagination-holder').html('<ul class="pagination-sm"></ul>');
             $('.pagination-sm').twbsPagination({
