@@ -1,6 +1,8 @@
 package com.migmig.repository;
 
 import com.migmig.model.PostalCode;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
@@ -19,10 +21,10 @@ public interface PostalCodeRepository extends PagingAndSortingRepository<PostalC
     //TODO
     //needs optimization
     @Query("SELECT p FROM codigospostales p WHERE LOWER(p.colonia) LIKE LOWER(CONCAT('%', :term, '%'))")
-    List<PostalCode> findSimilarColonia(@Param("term") String term);
+    Page<PostalCode> findSimilarColonia(@Param("term") String term, Pageable pageable);
 
     //TODO
     //needs optimization
     @Query("SELECT p FROM codigospostales p WHERE LOWER(p.colonia) LIKE LOWER(CONCAT('%', :term, '%')) OR LOWER(p.municipio) LIKE LOWER(CONCAT('%', :term, '%')) OR LOWER(p.estado) LIKE LOWER(CONCAT('%', :term, '%')) OR p.codigoPostal LIKE LOWER(CONCAT('%', :term, '%')) order by p.estado, p.municipio, p.colonia")
-    List<PostalCode> findSimilar(@Param("term") String term);
+    Page<PostalCode> findSimilar(@Param("term") String term, Pageable pageable);
 }
