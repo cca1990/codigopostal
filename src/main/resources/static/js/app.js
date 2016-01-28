@@ -6,12 +6,6 @@ var firstPage; var nextPage; var lastPage; var prevPage;
 var prevTerm = '';
 
 var updatePageLinks = function(data){
-    //firstPage = data._links.first.href;
-    //nextPage = data._links.next.href;
-
-    //lastPage = data._links.last.href;
-    //prevPage = data._links.prev.href;
-
     TOTAL_RECORDS = data.page.totalElements;
     LAST_PAGE = data.page.totalPages-1;
 };
