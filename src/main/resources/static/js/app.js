@@ -17,6 +17,7 @@ var updatePageLinks = function(data){
 };
 
 var showPostalCodesByPage = function(page){
+    $('#search-button').toggleClass('active');
     $.get("/api/postalCodes?page="+page, function(data, status){
         populateTable(data);
         updatePageLinks(data);
@@ -24,6 +25,8 @@ var showPostalCodesByPage = function(page){
 };
 
 var showPostalCodesBySimilarTerm = function(term, page){
+    $('#search-button').toggleClass('active');
+
     $.get("/api/postalCodes/search/findSimilar?term="+term+"&page="+(page-1), function(data, status){
         populateTable(data);
         updatePageLinks(data);
@@ -45,13 +48,6 @@ var showPostalCodesBySimilarTerm = function(term, page){
     });
 }
 
-var showPostalCodesByUrl = function(url){
-    $.get(url, function(data, status){
-        populateTable(data);
-        updatePageLinks(data);
-    });
-}
-
 var populateTable = function(data){
     var table = $("#codigos-postales tbody");
     var html = '';
@@ -64,10 +60,10 @@ var populateTable = function(data){
         foundElements.html("<h5>mostrando "+data.page.totalElements+" ["+$('#search-input').val()+"]</h5>");
     else
         foundElements.html("<h5>mostrando "+data.page.size+" de "+data.page.totalElements+" ["+$('#search-input').val()+"]</h5>");
+    $('#search-button').toggleClass('active');
 }
 
 $(document).ready(function(){
-    //showPostalCodesByPage(1);
     $('.pagination-sm').twbsPagination({
             totalPages: LAST_PAGE,
             visiblePages: 5,

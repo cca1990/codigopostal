@@ -7,12 +7,49 @@
     <title>Codigos Postales</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
 </head>
 <body>
+<style>
+    .spinner {
+    display: inline-block;
+    opacity: 0;
+    width: 0;
+
+    -webkit-transition: opacity 0.25s, width 0.25s;
+    -moz-transition: opacity 0.25s, width 0.25s;
+    -o-transition: opacity 0.25s, width 0.25s;
+    transition: opacity 0.25s, width 0.25s;
+    }
+
+    .has-spinner.active {
+    cursor:progress;
+    }
+
+    .has-spinner.active .spinner {
+    opacity: 1;
+    width: auto; /* This doesn't work, just fix for unkown width elements */
+    }
+
+    .has-spinner.btn-mini.active .spinner {
+    width: 10px;
+    }
+
+    .has-spinner.btn-small.active .spinner {
+    width: 13px;
+    }
+
+    .has-spinner.btn.active .spinner {
+    width: 16px;
+    }
+
+    .has-spinner.btn-large.active .spinner {
+    width: 19px;
+    }
+</style>
 <div class="container">
     <div class="row">
         <div class="col-lg-12 text-center v-center">
@@ -24,7 +61,10 @@
     <div class="row">
         <div class="col-md-10"><input  id="search-input" class="form-control" type="text" placeholder="Ejemplo. unidad tec"></div>
         <div class="col-md-2">
-            <button id="search-button" class="btn btn-default" >Buscar</button>
+            <button id="search-button" class="btn btn-default has-spinner" >
+                <span class="spinner"><i class="icon-spin icon-refresh"></i></span>
+                Buscar
+            </button>
         </div>
     </div>
     <div class="row">
