@@ -19,6 +19,7 @@ var showPostalCodesByPage = function(page){
 };
 
 var showPostalCodesBySimilarTerm = function(term, page){
+
     $('#search-button').toggleClass('active');
 
     $.get("/api/postalCodes/search/findSimilar?term="+term+"&page="+(page-1), function(data, status){
@@ -26,7 +27,10 @@ var showPostalCodesBySimilarTerm = function(term, page){
         updatePageLinks(data);
 
         //some tweaks for this plugin
-        if(prevTerm != term && (data.page.size < data.page.totalPages)){ //just if we need pagination
+        if(data.page.size > data.page.totalElements){ //we do not need pagination
+            $('.pagination-holder').html('');
+            prevTerm = term;
+        }else if(prevTerm != term){ //just if we need pagination
             $('.pagination-holder').html('');
             $('.pagination-holder').html('<ul class="pagination-sm"></ul>');
             $('.pagination-sm').twbsPagination({
@@ -58,6 +62,8 @@ var populateTable = function(data){
 }
 
 $(document).ready(function(){
+    $('#search-div').show();
+    $('#loading-div').hide();
     $('.pagination-sm').twbsPagination({
             totalPages: LAST_PAGE,
             visiblePages: 5,
