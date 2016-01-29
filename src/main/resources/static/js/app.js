@@ -7,7 +7,7 @@ var prevTerm = '';
 
 var updatePageLinks = function(data){
     TOTAL_RECORDS = data.page.totalElements;
-    LAST_PAGE = data.page.totalPages-1;
+    LAST_PAGE = data.page.totalPages;
 };
 
 var showPostalCodesByPage = function(page){
@@ -19,7 +19,7 @@ var showPostalCodesByPage = function(page){
 };
 var showPostalCodesBySimilarTerm = function(term, page){
     $('#search-button').toggleClass('active');
-    $.get("/api/postalCodes/search/findSimilar?term="+term+"&page="+(page-1), function(data, status){
+    $.get("/api/postalCodes/search/findSimilar?term="+term+"&page="+page, function(data, status){
         populateTable(data);
         updatePageLinks(data);
         //some tweaks for this plugin
@@ -33,7 +33,7 @@ var showPostalCodesBySimilarTerm = function(term, page){
                 visiblePages: 5,
                 first:'<<', prev:'<', next:'>', last:'>>',
                 onPageClick: function (event, page) {
-                    showPostalCodesBySimilarTerm(term, page);
+                    showPostalCodesBySimilarTerm(term, page-1);
                 }
              });
         }
@@ -64,8 +64,8 @@ $(document).ready(function(){
     });
     $('#search-input').keyup(function(e){
         if(e.keyCode == 13){
-            showPostalCodesBySimilarTerm($('#search-input').val(), 1);
+            showPostalCodesBySimilarTerm($('#search-input').val(), 0);
         }
     });
-    $('#search-button').click(function(e){showPostalCodesBySimilarTerm($('#search-input').val(), 1);});
+    $('#search-button').click(function(e){showPostalCodesBySimilarTerm($('#search-input').val(), 0);});
 });
