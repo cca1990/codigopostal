@@ -1,46 +1,25 @@
-var LAST_PAGE = 7299;
-var FIRST_PAGE = 1;
-var TOTAL_RECORDS = 145962;
-
-var firstPage; var nextPage; var lastPage; var prevPage;
-var prevTerm = '';
-
-var updatePageLinks = function(data){
-    TOTAL_RECORDS = data.page.totalElements;
-    LAST_PAGE = data.page.totalPages;
-};
-
-var showPostalCodesByPage = function(page){
-    $('#search-button').toggleClass('active');
-    $.get("/api/postalCodes?page="+page, function(data, status){
-        populateTable(data);
-        updatePageLinks(data);
-    });
-};
-var showPostalCodesBySimilarTerm = function(term, page){
+var prevTerm='';
+var findBySimilar = function(term, page){
     $('#search-button').toggleClass('active');
     $.get("/api/postalCodes/search/findSimilar?term="+term+"&page="+page, function(data, status){
         populateTable(data);
-        updatePageLinks(data);
-        //some tweaks for this plugin
-        if(data.page.size > data.page.totalElements){ //we do not need pagination
+        if(data.page.size > data.page.totalElements){ //remove pagination
             $('.pagination-holder').html('');
-        }else if(prevTerm != term){ //just if we need pagination
+        }else if(term!=prevTerm && (data.page.size < data.page.totalElements)){ //just if we need pagination or refresh pagination
             $('.pagination-holder').html('');
             $('.pagination-holder').html('<ul class="pagination-sm"></ul>');
             $('.pagination-sm').twbsPagination({
-                totalPages: LAST_PAGE,
+                totalPages: data.page.totalPages,
                 visiblePages: 5,
                 first:'<<', prev:'<', next:'>', last:'>>',
                 onPageClick: function (event, page) {
-                    showPostalCodesBySimilarTerm(term, page-1);
+                    findBySimilar(term, page-1);
                 }
              });
         }
         prevTerm = term;
     });
 }
-
 var populateTable = function(data){
     var table = $("#codigos-postales tbody");
     var html = '';
@@ -64,8 +43,8 @@ $(document).ready(function(){
     });
     $('#search-input').keyup(function(e){
         if(e.keyCode == 13){
-            showPostalCodesBySimilarTerm($('#search-input').val(), 0);
+            findBySimilar($('#search-input').val(), 0);
         }
     });
-    $('#search-button').click(function(e){showPostalCodesBySimilarTerm($('#search-input').val(), 0);});
+    $('#search-button').click(function(e){findBySimilar($('#search-input').val(), 0);});
 });
