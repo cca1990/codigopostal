@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta content="Códigos Postales, Código Postal, Codigo, Consulta, Descarga, Actualización, Correos de México, codigo postal mexico, codigos postales mexico" name="keywords">
+    <title>Códigos Postales</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72896041-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body>
+<style>
+    .spinner {
+    display: inline-block;
+    opacity: 0;
+    width: 0;
+
+    -webkit-transition: opacity 0.25s, width 0.25s;
+    -moz-transition: opacity 0.25s, width 0.25s;
+    -o-transition: opacity 0.25s, width 0.25s;
+    transition: opacity 0.25s, width 0.25s;
+    }
+
+    .has-spinner.active {
+    cursor:progress;
+    }
+
+    .has-spinner.active .spinner {
+    opacity: 1;
+    width: auto; /* This doesn't work, just fix for unkown width elements */
+    }
+
+    .has-spinner.btn-mini.active .spinner {
+    width: 10px;
+    }
+
+    .has-spinner.btn-small.active .spinner {
+    width: 13px;
+    }
+
+    .has-spinner.btn.active .spinner {
+    width: 16px;
+    }
+
+    .has-spinner.btn-large.active .spinner {
+    width: 19px;
+    }
+</style>
+<noscript>
+Tienes desactivado javascript. Necesitas activar javascript para que el sitio funcione.
+</noscript>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- responsivead -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-7416990021753515"
+                 data-ad-slot="5476814989"
+                 data-ad-format="auto"></ins>
+            <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-center v-center">
+            <h1>Códigos Postales de México</h1>
+            <p class="lead">Busca por código postal, colonia, municipio o estado...</p>
+            <br><br><br>
+        </div>
+    </div> <!-- /row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="alert alert-info alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <p>Ingresa un codigo postal, colonia, municipio o estado y presiona enter para empezar a buscar.</p>
+                <br>
+                <p><em>Fuente de datos: <a href="http://www.correosdemexico.gob.mx/ServiciosLinea/Paginas/DescargaCP.aspx">http://www.correosdemexico.gob.mx</a> </em>
+                <strong>Nota:</strong>	El Catálogo Nacional de Códigos Postales, es elaborado por el Servicio Postal Mexicano y se proporciona en forma gratuita, no estando permitida su comercialización, total o parcial.
+                <em>Última Actualización de Información: Febrero 1 de 2016</em></p>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="loading-div">
+        <div class="col-md-12">
+            <h3>Cargando...</h3>
+        </div>
+    </div>
+    <div class="row" id="search-div" style="display:none;">
+        <div class="col-md-10"><input  id="search-input" class="form-control" type="text" placeholder="Ejemplo. unidad tec"></div>
+        <div class="col-md-2">
+            <button id="search-button" class="btn btn-default has-spinner" >
+                <span class="spinner"><i class="icon-spin icon-refresh"></i></span>
+                Buscar
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" id="found-elements"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 pagination-holder"><ul class="pagination-sm"></ul></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <table id="codigos-postales" class="table table-striped display" width="100%">
+                <thead>
+                    <tr>
+                        <th>Código Postal</th>
+                        <th>Colonia</th>
+                        <th>Municipio</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="4">
+                            <h4>Cargando...</h4>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 pagination-holder"><ul class="pagination-sm"></ul></div>
+    </div>
+</div> <!-- /container -->
+<div class="container">
+    <hr>
+    <div class="row">
+        <div class="col-lg-12" style="background-color:#ddd;">
+
+        </div>
+    </div>
+</div>
+<!-- script references -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="/js/jquery.twbsPagination.min.js"></script>
+
+<script src="/js/app.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+</html>

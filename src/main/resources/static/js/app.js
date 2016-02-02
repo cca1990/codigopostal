@@ -1,4 +1,4 @@
-var prevTerm='';
+var prevTerm=new Date().getTime();
 var findBySimilar = function(term, page){
     $('#search-button').toggleClass('active');
     $.get("/api/postalCodes/search/findSimilar?term="+term+"&page="+page, function(data, status){
@@ -47,4 +47,5 @@ $(document).ready(function(){
         }
     });
     $('#search-button').click(function(e){findBySimilar($('#search-input').val(), 0);});
+    findBySimilar('',1);
 });
