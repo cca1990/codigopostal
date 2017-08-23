@@ -2,6 +2,7 @@
 Pagina para buscar códigos postales de México
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 3
 
@@ -10,3 +11,6 @@ Pagina para buscar códigos postales de México
 =======
 3c
 >>>>>>> testingc
+=======
+1a
+>>>>>>> testing1a
